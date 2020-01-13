@@ -1,4 +1,4 @@
-package in.indiaonline.news.mvpsupriyafirst;
+package in.indiaonline.news.mvpsupriyafirst.FirstApp;
 
 public class MainContract {
 
@@ -23,4 +23,6 @@ public class MainContract {
         void onButtonClick();
         void onDestroy();
     }
+
+
 }

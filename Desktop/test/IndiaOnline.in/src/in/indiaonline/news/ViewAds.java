@@ -10,6 +10,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -43,11 +48,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import in.indiaonline.Adapter.PaginationScrollListener;
 import in.indiaonline.Adapter.ViewAdsAdpter;
 import in.indiaonline.Model.LatestAdsResult;
@@ -143,10 +144,10 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
         	Log.i("Location data:",""+State+"-"+City);
         	String[] stateData=State.split("-");
         	gps_state=stateData[0];
-        	state_id=Integer.parseInt(stateData[1]);
+        	state_id= Integer.parseInt(stateData[1]);
         	String[] cityData=City.split("-");
         	gps_city=cityData[0];
-        	city_id=Integer.parseInt(cityData[1]);
+        	city_id= Integer.parseInt(cityData[1]);
         	Log.i("Location data:",""+gps_state+state_id+gps_city+city_id);
 
 			gps =new GPSTracker(ViewAds.this);
@@ -220,7 +221,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 			dialog.show();
 			ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 			Call<List<LatestAdsResult>> call = apiInterface.GetLatestAds("E5XIJ7,08D,VIeGHhXRjKg==",
-					String.valueOf(gps_sid),String.valueOf(gps_cid),currentPage,pageSize);
+					String.valueOf(gps_sid), String.valueOf(gps_cid),currentPage,pageSize);
 
 			call.enqueue(new Callback<List<LatestAdsResult>>() {
 				@Override
@@ -265,7 +266,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 			// dialog.show();
 			ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 			Call<List<LatestAdsResult>> call = apiInterface.GetLatestAds("E5XIJ7,08D,VIeGHhXRjKg==",
-					String.valueOf(gps_sid),String.valueOf(gps_cid),currentPage,pageSize);
+					String.valueOf(gps_sid), String.valueOf(gps_cid),currentPage,pageSize);
 
 			call.enqueue(new Callback<List<LatestAdsResult>>() {
 				@Override
@@ -348,7 +349,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 		SearchLocation.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-               int position, long id) {
+                                    int position, long id) {
             	Log.i("onclick array"+position, "-"+SuggestionArray.size());
             	state_id=StateIdArray.get(position);
             	city_id=CityIdArray.get(position);
@@ -408,7 +409,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 
 	 private void promptSpeechInput() {
 	        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-	        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+	        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 	        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 	        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,getString(R.string.speech_prompt));
 	        try {
@@ -436,7 +437,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 	    	}
 	 }
 
-	public class AsyncSearch extends AsyncTask<Void,Void,Void>{
+	public class AsyncSearch extends AsyncTask<Void, Void, Void> {
 
 		String SearchTerm;
 		AsyncSearch(String SearchTerm){
@@ -675,7 +676,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 		return true;
 	}
 
-	class getAddressAsync extends AsyncTask<Void,Void,Void>{
+	class getAddressAsync extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... voids) {
@@ -718,7 +719,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 			startActivity(i);
 			return true;
 		}
-		else if(id==R.id.login_item){
+		else if(id== R.id.login_item){
 
 			if(sessions.isLoggedIn())
 			{
@@ -734,28 +735,28 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 				startActivity(i);
 			}
 		}
-		else if(id==R.id.detect_loc){
+		else if(id== R.id.detect_loc){
 		       // Toast.makeText(MyAds.this, "Location detection",Toast.LENGTH_LONG).show();
 		        return true;
 
 		}
-		else if(id==R.id.auto_detect){
+		else if(id== R.id.auto_detect){
 
 			hidelocation();
 
 	        return true;
 		}
-		else if(id==R.id.manualy_detect){
+		else if(id== R.id.manualy_detect){
 			LocationFound();
 			return true;
 		}
 
 
-		else if(id==R.id.auto_detect2){
+		else if(id== R.id.auto_detect2){
 			hidelocation();
 		    return true;
 		}
-		else if(id==R.id.manualy_detect2){
+		else if(id== R.id.manualy_detect2){
 			LocationFound();
 			return true;
 		}
@@ -770,7 +771,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 		int id=v.getId();
 		switch(id)
 		{
-		case  R.id.postad: Intent i=new Intent(ViewAds.this,Ads.class);
+		case  R.id.postad: Intent i=new Intent(ViewAds.this, Ads.class);
 							i.putExtra("AdsUrl", AdsUrl);
 							finish();
 						  startActivity(i);	
@@ -778,7 +779,7 @@ public class ViewAds extends AppCompatActivity implements OnClickListener {
 						  break;
 
 		case R.id.myad:
-            Intent i1=new Intent(ViewAds.this,MyAds.class);
+            Intent i1=new Intent(ViewAds.this, MyAds.class);
             i1.putExtra("AdsUrl", AdsUrl);
             finish();
             startActivity(i1);

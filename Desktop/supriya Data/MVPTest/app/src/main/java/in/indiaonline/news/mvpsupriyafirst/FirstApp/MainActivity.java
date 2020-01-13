@@ -1,7 +1,6 @@
-package in.indiaonline.news.mvpsupriyafirst;
+package in.indiaonline.news.mvpsupriyafirst.FirstApp;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -9,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import in.indiaonline.news.mvpsupriyafirst.R;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
                 presenter.onButtonClick();
             }
         });
-
-
 
     }
 

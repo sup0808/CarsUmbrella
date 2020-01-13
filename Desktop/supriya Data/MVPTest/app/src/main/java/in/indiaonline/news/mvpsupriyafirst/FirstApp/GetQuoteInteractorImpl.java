@@ -1,4 +1,4 @@
-package in.indiaonline.news.mvpsupriyafirst;
+package in.indiaonline.news.mvpsupriyafirst.FirstApp;
 
 import android.os.Handler;
 
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GetQuoteInteractorImpl implements MainContract.GetQuoteInteractor {
+
     private List<String> arrayList = Arrays.asList(
             "Be yourself. everyone else is already taken.",
             "A room without books is like a body without a soul.",

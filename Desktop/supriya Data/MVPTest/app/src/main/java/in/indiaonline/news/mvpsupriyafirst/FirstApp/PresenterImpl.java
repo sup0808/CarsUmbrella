@@ -1,4 +1,4 @@
-package in.indiaonline.news.mvpsupriyafirst;
+package in.indiaonline.news.mvpsupriyafirst.FirstApp;
 
 public class PresenterImpl implements MainContract.Presenter,MainContract.GetQuoteInteractor.onFinishedListener{
 
